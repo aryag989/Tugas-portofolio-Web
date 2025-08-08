@@ -3,5 +3,11 @@
 
 **Ini adalah tugas dari Bu Mella**
 
-Link:
-bit.ly/tugaswebarya
+NOTE:
+1. Dilarang mengganti atau menghapus file atau folder.
+2. Dilarang meminjam atau menginstall file tanpa seizin apapun.
+
+
+Oh iya, untuk Bu Mella, terima kasih telah mempelajari WEB tentang tugas portofolio saya. tugasnya dikumpulkan di mana ya?
+
+THE END
