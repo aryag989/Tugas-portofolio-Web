@@ -4,4 +4,4 @@
 **Ini adalah tugas dari Bu Mella**
 
 Link:
-https://aryag989.github.io/Tugas-portofolio-Web/
+bit.ly/tugaswebarya
