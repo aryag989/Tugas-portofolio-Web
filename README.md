@@ -3,6 +3,9 @@
 
 **Ini adalah tugas dari Bu Mella**
 
+Link:
+https://aryag989.github.io/Tugas-portofolio-Web/
+
 NOTE:
 1. Dilarang mengganti atau menghapus file atau folder.
 2. Dilarang meminjam atau menginstall file tanpa seizin apapun.
