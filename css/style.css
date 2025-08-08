@@ -1,0 +1,64 @@
+body {
+    font-family: 'Erica One';font-size: 22px;
+}
+
+body {
+  background: linear-gradient(90deg, #00ff0d, #000000, #00ff0d);
+  animation-name: page;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1000;
+}
+
+.hero {
+    background: linear-gradient(90deg, #ff0000, #000000, #ff0000);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+}
+
+p {
+    text-align: center;
+    color: white;
+}
+
+.cursor {
+    display: inline-block;
+    color: #ffffff;
+    animation: blink 1s infinite;
+    font-weight: bold;
+}
+
+.main{
+    background: linear-gradient(90deg, yellow, black, yellow)
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes page {
+    0% {background: linear-gradient(90deg, yellow, black, yellow)}
+    25% {background: linear-gradient(90deg, yellow, black, yellow)}
+    50% {background: linear-gradient(90deg, rgb(0, 255, 0), black, rgb(0, 255, 0))}
+    100% {background: linear-gradient(90deg, blue, black, blue)}
+}
+
+.portfolio-card {
+    transition: transform 0.3s;
+}
+
+.portfolio-card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
