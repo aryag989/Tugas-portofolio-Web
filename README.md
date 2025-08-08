@@ -8,6 +8,6 @@ NOTE:
 2. Dilarang meminjam atau menginstall file tanpa seizin apapun.
 
 
-Oh iya, untuk Bu Mella, terima kasih telah mempelajari WEB tentang tugas portofolio saya. tugasnya dikumpulkan di mana ya?
+Oh iya, untuk Bu Mella, terima kasih telah mempelajari WEB tentang tugas portofolio saya. Tugasnya dikumpulkan di mana ya?
 
 THE END
