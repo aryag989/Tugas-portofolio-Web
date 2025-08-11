@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Mengumpulkan Bola 3D</title>
+    <!-- Memuat Three.js dari CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+        }
+        #info {
+            position: absolute;
+            top: 1rem;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            pointer-events: none; /* Penting agar mouse events tidak terhalang */
+        }
+        #instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1.5rem 3rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="info">
+        <div id="score">Skor: 0</div>
+    </div>
+    
+    <div id="instructions">
+        Gunakan tombol panah atau W, A, S, D untuk bergerak.<br>
+        Kumpulkan bola hijau untuk mendapatkan skor!
+    </div>
+
+    <script>
+        // --- Setup Scene, Camera, Renderer ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // --- Variabel Permainan ---
+        let score = 0;
+        const speed = 0.1;
+        const playerSize = 1;
+        let target;
+        let keys = {};
+        const playerVelocity = new THREE.Vector3();
+        const playerPosition = new THREE.Vector3();
+
+        // --- UI Elemen ---
+        const scoreDisplay = document.getElementById('score');
+        const instructions = document.getElementById('instructions');
+
+        // --- Membuat Kubus Pemain (Player) ---
+        const playerGeometry = new THREE.BoxGeometry(playerSize, playerSize, playerSize);
+        const playerMaterial = new THREE.MeshLambertMaterial({ color: 0xffa500 }); // Kubus oranye
+        const player = new THREE.Mesh(playerGeometry, playerMaterial);
+        scene.add(player);
+        playerPosition.copy(player.position);
+
+        // --- Menambahkan Pencahayaan ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Cahaya sekitar
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xffffff, 1); // Cahaya titik
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        // --- Membuat Lingkungan ---
+        const gridHelper = new THREE.GridHelper(50, 50, 0x555555, 0x555555);
+        scene.add(gridHelper);
+
+        // --- Fungsi untuk Membuat Bola Target ---
+        function createTarget() {
+            // Jika target sudah ada, hapus dulu
+            if (target) {
+                scene.remove(target);
+            }
+            const targetGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+            const targetMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Bola hijau
+            target = new THREE.Mesh(targetGeometry, targetMaterial);
+
+            // Menempatkan target di posisi acak dalam rentang tertentu
+            const min = -20;
+            const max = 20;
+            target.position.set(
+                Math.random() * (max - min) + min,
+                0.5,
+                Math.random() * (max - min) + min
+            );
+            scene.add(target);
+        }
+
+        // --- Fungsi untuk Memeriksa Tabrakan (Collision Detection) ---
+        function checkCollision() {
+            if (!target) return;
+
+            const distance = player.position.distanceTo(target.position);
+            // Jarak tabrakan antara kubus dan bola
+            const collisionDistance = playerSize / 2 + 0.5;
+
+            if (distance < collisionDistance) {
+                // Tabrakan terjadi, perbarui skor dan buat target baru
+                score++;
+                scoreDisplay.textContent = `Skor: ${score}`;
+                createTarget();
+            }
+        }
+
+        // --- Mengatur Kamera ---
+        camera.position.set(0, 10, 15);
+        camera.lookAt(0, 0, 0);
+
+        // --- Event Listener untuk Kontrol Keyboard ---
+        window.addEventListener('keydown', (event) => {
+            keys[event.key.toLowerCase()] = true;
+            // Sembunyikan instruksi setelah tombol pertama ditekan
+            if (instructions) {
+                instructions.style.display = 'none';
+            }
+        });
+
+        window.addEventListener('keyup', (event) => {
+            keys[event.key.toLowerCase()] = false;
+        });
+
+        // --- Loop Animasi Utama ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Mengatur kecepatan pemain
+            playerVelocity.set(0, 0, 0);
+            if (keys['w'] || keys['arrowup']) playerVelocity.z -= speed;
+            if (keys['s'] || keys['arrowdown']) playerVelocity.z += speed;
+            if (keys['a'] || keys['arrowleft']) playerVelocity.x -= speed;
+            if (keys['d'] || keys['arrowright']) playerVelocity.x += speed;
+
+            // Perbarui posisi pemain
+            player.position.add(playerVelocity);
+            
+            // Perbarui posisi kamera agar mengikuti pemain
+            camera.position.x = player.position.x;
+            camera.position.z = player.position.z + 10;
+            camera.position.y = player.position.y + 10;
+            camera.lookAt(player.position.x, player.position.y, player.position.z);
+
+
+            // Cek tabrakan
+            checkCollision();
+
+            // Render scene
+            renderer.render(scene, camera);
+        }
+
+        // --- Memulai Permainan ---
+        createTarget(); // Buat target pertama
+        animate(); // Mulai loop animasi
+
+        // --- Menangani Ukuran Jendela ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
