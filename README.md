@@ -9,4 +9,6 @@ _https://aryag989.github.io/web_portofolio_arya/_
 1. Dilarang mengganti atau menghapus file atau folder.
 2. Dilarang meminjam atau menginstall file tanpa seizin apapun.
 
-*Arya*
+
+
+*GOOD LUCK*
