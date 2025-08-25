@@ -3,7 +3,7 @@
 
 **Ini adalah tugas dari Bu Mella**
 
-Link:
+(UPDATED) Link:
 https://aryag989.github.io/Tugas-portofolio-Web/
 
 NOTE:
