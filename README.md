@@ -1,16 +1,12 @@
-# Tugas-portofolio-Web
-05. Arya Gusti Suratnaya / XII RPL 1
+# BACA TERLEBIH DAHULU
+**A. INSTRUKSI:**
+Ini adalah tugas dari Bu Mella, yaitu *mengubah / mengedit website portofolio menggunakan Visual Studio.*
 
-**Ini adalah tugas dari Bu Mella**
+**B. (UPDATE) LINK:**
+_https://aryag989.github.io/web_portofolio_arya/_
 
-(UPDATED) Link:
-https://aryag989.github.io/web_portofolio_arya/
-
-NOTE:
+**C. NOTE:**
 1. Dilarang mengganti atau menghapus file atau folder.
 2. Dilarang meminjam atau menginstall file tanpa seizin apapun.
 
-
-Oh iya, untuk Bu Mella, terima kasih telah mempelajari WEB tentang tugas portofolio saya. Tugasnya dikumpulkan di mana ya?
-
-THE END
+*Arya*
