@@ -3,7 +3,7 @@
 Ini adalah tugas dari Bu Mella, yaitu *mengubah / mengedit website portofolio menggunakan Visual Studio.*
 
 **B. (UPDATE) LINK:**
-_https://aryag989.github.io/web_portofolio_arya/_
+_https://aryag989.github.io/web_portofolio_arya/_ / _https://bit.ly/tugaswebportofolioarya_
 
 **C. NOTE:**
 1. Dilarang mengganti atau menghapus file atau folder.
