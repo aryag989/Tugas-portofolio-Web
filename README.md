@@ -4,7 +4,7 @@
 **Ini adalah tugas dari Bu Mella**
 
 (UPDATED) Link:
-https://aryag989.github.io/Tugas-portofolio-Web/
+https://aryag989.github.io/web_portofolio_arya/
 
 NOTE:
 1. Dilarang mengganti atau menghapus file atau folder.
